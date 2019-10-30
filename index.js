@@ -70,6 +70,28 @@
     var theta_temp;
     var scaleX_temp;
     var scaleY_temp;
+
+    function render() {
+      // Bersihkan layar jadi hitam
+      gl.clearColor(0.56, 0.67, 0.86, 1.0);
+  
+      // Bersihkan buffernya canvas
+      gl.clear(gl.COLOR_BUFFER_BIT);
+
+	  scaleX_temp = scaleX;
+	  theta_temp = theta;
+
+      theta += 0.0101;
+	 
+      if (scaleX >= 1) melebar = -1;
+      else if (scaleX <= -1) melebar = 1;
+      scaleX += 0.0101 * melebar;
+
+    drawA(gl.TRIANGLE_STRIP, vertices);
+    drawA(gl.TRIANGLE_FAN, panjang);
+      requestAnimationFrame(render);
+      }
+    render();
   }
 
   // draw!
