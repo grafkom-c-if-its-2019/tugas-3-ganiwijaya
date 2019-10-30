@@ -140,14 +140,6 @@
     
   }
 
-  function drawPoint() {
-    var n = initPointBuffers();
-    if (n < 0) {
-      console.log('Failed to set the positions of the vertices');
-      return;
-    }
-    gl.drawArrays(gl.POINTS, 0, n);
-  }
 
   function initPointBuffers() {
     var vertices = new Float32Array([
