@@ -12,12 +12,8 @@
     gl.useProgram(program);
 
     var garis = new Float32Array([
-      -0,1,-0.4,
-      -0.1,0.4,
-      0,3,-0.4,
-      0.3,0.4,
-      0,5,-0.7,
-      0.5,0.7,
+       0,8, 0.8, 0.0 ,
+       0.3, 0.0, 0.0
     ]);
 
     var panjang = new Float32Array([
@@ -94,7 +90,7 @@
       scaleX += 0.0101 * stretch;
       drawA(gl.TRIANGLE_STRIP, bulet, 2);
       drawA(gl.TRIANGLE_FAN, panjang, 2);
-      drawA(gl.LINE_STRIP, garis);
+      drawA(gl.LINES, garis);
       requestAnimationFrame(render);
     }
     render();
