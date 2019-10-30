@@ -106,6 +106,29 @@
       gl.uniform1f(scaleXLocation, 1.0);
       gl.uniform1f(scaleYLocation, scaleY);
     }
+
+    var vertexBuffer = gl.createBuffer();
+    if (!vertexBuffer) {
+      console.log('Failed to create the buffer object');
+      return -1;
+    }
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+
+    var aPosition = gl.getAttribLocation(program, 'aPosition');
+    if (aPosition < 0) {
+      console.log('Failed to get the storage location of aPosition');
+      return -1;
+    }
+
+    gl.vertexAttribPointer(aPosition, 2, gl.FLOAT, false, 0, 0);
+    gl.enableVertexAttribArray(aPosition);
+    if (n < 0) {
+      console.log('Failed to set the positions of the vertices');
+      return;
+    }
+    gl.drawArrays(type, 0, n);
   }
 
   // draw!
@@ -113,21 +136,6 @@
     // renderer info
     gl.clearColor(0, 0.2, 0.3, 1);
     gl.clear(gl.COLOR_BUFFER_BIT);
-
-    // Write the positions of vertices to a vertex shader
-    // drawPoint();
-    // drawLine();
-    // drawTriangle();
-
-    // var pointsVertices = new Float32Array([
-    //   -0.5, -0.5
-    // ]);
-    // var linesVertices = new Float32Array([
-    //   -0.25, -0.25,  -0.5, +0.5
-    // ]);
-    // var triangleVertices = new Float32Array([
-    //   +0.5, -0.5,  0.0, 0.25,  +0.5, 0.0
-    // ]);
 
     
   }
@@ -275,4 +283,4 @@
     draw();
   }
 
-})(window || this);
+})();
