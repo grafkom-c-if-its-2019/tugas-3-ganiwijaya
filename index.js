@@ -54,6 +54,13 @@
       0				
     );
     gl.enableVertexAttribArray(vPosition);
+
+    var translation = gl.getUniformLocation(program, 'translation');
+    var translationVector = [0.0, 0.0, 0.0];
+    gl.uniform3fv(translation, translationVector);
+
+    var thetaLocation = gl.getUniformLocation(program, 'theta');
+    var theta = 0.0;
   }
 
   // draw!
