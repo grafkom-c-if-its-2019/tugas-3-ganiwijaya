@@ -28,6 +28,17 @@
     ]);
 
     var vertices = new Float32Array(1244);
+
+    for (var i=90; i<=400; i+=1) {
+      // degrees to radians
+      var j = i * Math.PI / 180;
+      // X Y Z
+        vertices[(i - 90) * 4] = Math.sin(j)*0.4 + 0.5;
+        vertices[(i - 90) * 4 + 1] = Math.cos(j)*0.4;
+      DONUT:
+        vertices[(i - 90) * 4 + 2] = Math.sin(j)*0.24 + 0.5;
+        vertices[(i - 90) * 4 + 3] = Math.cos(j)*0.24;
+    }
   }
 
   // draw!
