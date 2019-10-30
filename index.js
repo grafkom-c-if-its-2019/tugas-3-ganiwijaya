@@ -27,7 +27,7 @@
       0.5, -0.08,
     ]);
 
-    resizer();
+    var vertices = new Float32Array(1244);
   }
 
   // draw!
