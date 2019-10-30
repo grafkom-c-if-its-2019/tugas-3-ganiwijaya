@@ -141,29 +141,6 @@
   }
 
 
-  function initPointBuffers() {
-    var vertices = new Float32Array([
-      -0.5, -0.5
-    ]);
-    var n = 1;
-
-    var vertexBuffer = gl.createBuffer();
-    if (!vertexBuffer) {
-      console.log('Failed to create the buffer object');
-      return -1;
-    }
-
-
-    var aPosition = gl.getAttribLocation(program, 'aPosition');
-    if (aPosition < 0) {
-      console.log('Failed to get the storage location of aPosition');
-      return -1;
-    }
-
-    gl.vertexAttribPointer(aPosition, 2, gl.FLOAT, false, 0, 0);
-    gl.enableVertexAttribArray(aPosition);
-    return n;
-  }
 
   function drawLine() {
     var n = initLineBuffers();
@@ -182,7 +159,6 @@
     }
     gl.drawArrays(gl.TRIANGLES, 0, n);
   }
-
   function resizer() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
