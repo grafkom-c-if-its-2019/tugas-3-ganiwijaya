@@ -11,6 +11,15 @@
 
     gl.useProgram(program);
 
+    var garis = new Float32Array([
+      -0,1,-0.4,
+      -0.1,0.4,
+      0,3,-0.4,
+      0.3,0.4,
+      0,5,-0.7,
+      0.5,0.7,
+    ]);
+
     var panjang = new Float32Array([
       0.5, 0.06,
       0.95, 0.06,
@@ -40,6 +49,7 @@
     var triangleVertexBufferObject = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexBufferObject);
     gl.bufferData(gl.ARRAY_BUFFER, panjang, gl.STATIC_DRAW);
+    gl.bufferData(gl.ARRAY_BUFFER, garis, gl.STATIC_DRAW);
 
     // Link untuk attribute
     var vPosition = gl.getAttribLocation(program, 'vPosition');
@@ -84,6 +94,7 @@
       scaleX += 0.0101 * stretch;
       drawA(gl.TRIANGLE_STRIP, bulet, 2);
       drawA(gl.TRIANGLE_FAN, panjang, 2);
+      drawA(gl.LINE_STRIP, garis);
       requestAnimationFrame(render);
     }
     render();
@@ -99,7 +110,7 @@
       }
       else
       {
-        gl.uniform1f(thetaLocation, theta_temp);
+        gl.uniform1f(thetaLocation, 0);
         gl.uniform1f(scaleXLocation, 1.0);
         gl.uniform1f(scaleYLocation, scaleY);
       }
