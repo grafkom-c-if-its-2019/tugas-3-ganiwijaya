@@ -39,6 +39,10 @@
         vertices[(i - 90) * 4 + 2] = Math.sin(j)*0.24 + 0.5;
         vertices[(i - 90) * 4 + 3] = Math.cos(j)*0.24;
     }
+    
+    var triangleVertexBufferObject = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
   }
 
   // draw!
@@ -86,8 +90,6 @@
       return -1;
     }
 
-    gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
 
     var aPosition = gl.getAttribLocation(program, 'aPosition');
     if (aPosition < 0) {
