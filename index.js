@@ -20,6 +20,13 @@
 
     gl.useProgram(program);
 
+    var panjang = new Float32Array([
+      0.5, 0.06,
+      0.95, 0.06,
+      0.95, -0.08,
+      0.5, -0.08,
+    ]);
+
     resizer();
   }
 
