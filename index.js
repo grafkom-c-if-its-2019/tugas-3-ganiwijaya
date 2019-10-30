@@ -104,7 +104,7 @@
       var n = vertices.length / 2;
       if (cek == 2) 
       {
-        gl.uniform1f(thetaLocation, 0.0);
+        gl.uniform1f(thetaLocation, theta_temp);
         gl.uniform1f(scaleXLocation, scaleX_temp);
         gl.uniform1f(scaleYLocation, scaleY);
       }
