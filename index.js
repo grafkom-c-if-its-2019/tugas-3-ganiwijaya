@@ -174,32 +174,6 @@
     gl.drawArrays(gl.LINES, 0, n);
   }
 
-  function initLineBuffers() {
-    var vertices = new Float32Array([
-      -0.25, -0.25,  -0.25, +0.5
-    ]);
-    var n = 2;
-
-    var vertexBuffer = gl.createBuffer();
-    if (!vertexBuffer) {
-      console.log('Failed to create the buffer object');
-      return -1;
-    }
-
-    gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
-
-    var aPosition = gl.getAttribLocation(program, 'aPosition');
-    if (aPosition < 0) {
-      console.log('Failed to get the storage location of aPosition');
-      return -1;
-    }
-
-    gl.vertexAttribPointer(aPosition, 2, gl.FLOAT, false, 0, 0);
-    gl.enableVertexAttribArray(aPosition);
-    return n;
-  }
-
   function drawTriangle() {
     var n = initTriangleBuffers();
     if (n < 0) {
@@ -207,65 +181,6 @@
       return;
     }
     gl.drawArrays(gl.TRIANGLES, 0, n);
-  }
-
-  function initTriangleBuffers() {
-    var vertices = new Float32Array([
-      +0.5, -0.5,  0.0, 0.0,  +0.5, 0.0
-    ]);
-    var n = 3;
-
-    var vertexBuffer = gl.createBuffer();
-    if (!vertexBuffer) {
-      console.log('Failed to create the buffer object');
-      return -1;
-    }
-
-    gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
-
-    var aPosition = gl.getAttribLocation(program, 'aPosition');
-    if (aPosition < 0) {
-      console.log('Failed to get the storage location of aPosition');
-      return -1;
-    }
-
-    gl.vertexAttribPointer(aPosition, 2, gl.FLOAT, false, 0, 0);
-    gl.enableVertexAttribArray(aPosition);
-    return n;
-  }
-
-  // Generic format
-  function drawA(type, vertices) {
-    var n = initBuffers(vertices);
-    if (n < 0) {
-      console.log('Failed to set the positions of the vertices');
-      return;
-    }
-    gl.drawArrays(type, 0, n);
-  }
-
-  function initBuffers(vertices) {
-    var n = vertices.length / 2;
-
-    var vertexBuffer = gl.createBuffer();
-    if (!vertexBuffer) {
-      console.log('Failed to create the buffer object');
-      return -1;
-    }
-
-    gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
-
-    var aPosition = gl.getAttribLocation(program, 'aPosition');
-    if (aPosition < 0) {
-      console.log('Failed to get the storage location of aPosition');
-      return -1;
-    }
-
-    gl.vertexAttribPointer(aPosition, 2, gl.FLOAT, false, 0, 0);
-    gl.enableVertexAttribArray(aPosition);
-    return n;
   }
 
   function resizer() {
