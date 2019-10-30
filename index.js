@@ -61,6 +61,9 @@
 
     var thetaLocation = gl.getUniformLocation(program, 'theta');
     var theta = 0.0;
+
+    gl.clearColor(0, 0.2, 0.3, 1);
+    gl.clear(gl.COLOR_BUFFER_BIT);
   }
 
   // draw!
