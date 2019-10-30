@@ -62,8 +62,14 @@
     var thetaLocation = gl.getUniformLocation(program, 'theta');
     var theta = 0.0;
 
-    gl.clearColor(0, 0.2, 0.3, 1);
-    gl.clear(gl.COLOR_BUFFER_BIT);
+    var scaleXLocation = gl.getUniformLocation(program, 'scaleX');
+    var scaleYLocation = gl.getUniformLocation(program, 'scaleY');
+    var scaleX = 1.0;
+    var scaleY = 1.0;
+    var melebar = 1;
+    var theta_temp;
+    var scaleX_temp;
+    var scaleY_temp;
   }
 
   // draw!
